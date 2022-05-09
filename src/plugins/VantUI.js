@@ -4,13 +4,16 @@ import {
     Badge,
     Button,
     CellGroup,
+    Col,
     Divider,
     Field,
     Form,
     Icon,
+    Row,
     SwipeCell,
-    Card,
-    Cell
+    // Card,
+    Cell,
+    NavBar
 } from 'vant';
 Vue.use(Button);
 Vue.use(Icon);
@@ -20,5 +23,8 @@ Vue.use(CellGroup);
 Vue.use(Badge);
 Vue.use(Divider);
 Vue.use(SwipeCell);
-Vue.use(Card);
-Vue.use(Cell)
+// Vue.use(Card);
+Vue.use(Cell);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(NavBar)

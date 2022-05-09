@@ -1,13 +1,13 @@
 <template>
     <div id="register">
-        <div class="top-bar">
+        <!-- <div class="top-bar">
             <router-link to="/login">
                 <van-icon name="arrow-left" size="1.5rem" />
             </router-link>
             <router-link to="/login">
                 <van-icon name="cross" size="1.5rem" />
             </router-link>
-        </div>
+        </div> -->
         <div class="main-body">
             <div class="logo">
                 <img src="../assets/images/login&register/QQ.png" alt="">

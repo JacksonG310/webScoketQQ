@@ -25,7 +25,7 @@
     <div class="footer">
       <van-icon name="chat-o" badge="99+" />
       <van-icon name="friends-o" />
-      <van-icon name="https://cdn.jsdelivr.net/npm/@vant/assets/icon-demo.png" />
+      <!-- <van-icon name="https://cdn.jsdelivr.net/npm/@vant/assets/icon-demo.png" /> -->
     </div>
   </div>
 </template>

@@ -1,13 +1,23 @@
 <template>
     <div id="login">
-        <div class="top-bar">
+        <!-- <div class="top-bar">
             <span class="close-button">
                 <router-link to="#">
                     <van-icon name="arrow-left" size="1.5rem" />
                 </router-link>
             </span>
             <router-link to="/register"><span class="register-button">注册</span></router-link>
-        </div>
+        </div> -->
+        <top-bar :title="登录">
+            <template slot="left-button">
+                <router-link to="#">
+                    <van-icon name="arrow-left" size="1.5rem" />
+                </router-link>
+            </template>
+            <template slot="right-button">
+                <router-link to="/register"><span class="register-button">注册</span></router-link>
+            </template>
+        </top-bar>
         <div class="main-body">
             <div class="logo">
                 <img src="../assets/images/login&register/QQ.png" alt="">
@@ -28,14 +38,6 @@
                         </van-button>
                     </div>
                 </van-form>
-
-                <!-- <div class="form-box">
-                    <form>
-                        <input class="username" type="text" v-model="userInfo.data" placeholder="用户名/邮箱">
-                        <input class="password" type="text" v-model="userInfo.password" placeholder="密码">
-                    </form>
-                    <p class="tip" v-show="tip">用户名或密码错误！</p>
-                    <button class="login-button" @click="doLogin">登录</button> -->
             </div>
         </div>
     </div>
@@ -43,7 +45,9 @@
 </template>
 
 <script>
+import topBar from "../components/Common/top-bar"
 export default {
+    components: { topBar },
     data() {
         return {
             userInfo: {
@@ -84,7 +88,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 2.75rem;
+        height: 2.75rem !important;
         padding: 2rem 1rem;
 
         .close-button {
