@@ -1,48 +1,54 @@
 <template >
-    <div id="top-bar">
-        <span class="left-button">
-            <slot name="left-button"></slot>
+    <div id="top-bar" :class="{'addpadding':padding}">
+        <span class="left-button" @click="clickLeft">
+            <slot name="left"></slot>
         </span>
-        <span class="title">{{ title }}</span>
-        <span class="right-button">
-            <slot name="right-button"></slot>
+        <span class="title"></span>
+        <span class="right-button" @click="clickRight">
+            <slot name="right"></slot>
         </span>
     </div>
 </template>
 
 <script>
 export default {
-    props: ["title"]
+    props: ["title","padding"],
+    methods: {
+        clickLeft() {
+            this.$emit("click-left");
+        },
+        clickRight() {
+            this.$emit("click-right");
+        }
+    }
 }
 </script>
 
 <style lang="less">
-.top-bar {
+#top-bar {
+  &.addpadding{
+    padding: 0 @less-spacing-row-28;
+  }
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     width: 100%;
-    height: 2.75rem !important;
-    padding: 2rem 1rem;
-    background-color: pink;
+    //width: 7.5rem;
+    height: .88rem;
+    background-color: #fff;
 
-    // .left-button {
-    //     display: inline-block;
-    //     width: 1.05rem;
-    //     height: 1.05rem;
+    .left-button,
+    .right-button {
+        font-size: @less-text-size-18;
+    }
 
-    //     img {
-    //         width: 100%;
-    //     }
-    // }
+    .title {
+      font-size: @less-text-size-20;
+    }
 
-    // .right-button {
-    //     width: 2.25rem;
-    //     height: 1.56rem;
-    //     font-family: Kanit;
-    //     font-size: 1.12rem;
-    //     color: #333333;
-    //     font-weight: 500;
-    // }
+
 }
 </style>

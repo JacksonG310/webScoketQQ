@@ -3,6 +3,7 @@ import "./plugins/ElementUI"
 import "element-ui/lib/theme-chalk/index.css"
 import "vant/lib/index.css"
 import "./plugins/VantUI"
+import "./assets/js/font-resize"
 import axios from 'axios'
 import Vue from 'vue'
 import App from './App.vue'

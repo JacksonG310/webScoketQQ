@@ -72,7 +72,7 @@ export default {
     .top-bar-left {
       width: 4.5rem;
       height: 2.13rem;
-      padding-left: @less-spacing-row-sm;
+      padding-left: @less-spacing-row-28;
       text-align: left;
 
       .profile {
@@ -94,10 +94,10 @@ export default {
     }
 
     .top-bar-right {
-      padding-right: @less-spacing-row-sm;
+      padding-right: @less-spacing-row-28;
 
       .search {
-        padding-right: @less-spacing-row-sm;
+        padding-right: @less-spacing-row-28;
       }
     }
 

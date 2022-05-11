@@ -117,7 +117,7 @@ export default {
             height: 2.5rem;
             margin-left: 1rem;
             margin-bottom: 1rem;
-            font-size: @less-text-size-lg;
+            //font-size: @less-text-size-lg;
             color: #272832;
             font-weight: 800;
         }
