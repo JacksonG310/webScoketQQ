@@ -1,114 +1,92 @@
 <template>
-    <van-swipe-cell id="list-item">
-        <van-row>
-            <van-col :span="4">
-                <div class="item-left">
-                    <van-badge :content="100" max="99">
-                        <img class="profile" :src="require(`../../assets/images/list-item/${item.imgurl}`)" alt="">
-                    </van-badge>
-                </div>
-            </van-col>
-            <van-col :span="20">
-                <div class="item-right">
-                    <div class="title"><span class="name">{{ item.name }}</span>
-                        <span class="time">{{ formatTime(item.time) }}</span>
-                    </div>
-                    <div class="info">
-                        {{ item.news }}
-                    </div>
-                </div>
-
-            </van-col>
-        </van-row>
-        <template #right>
-            <van-button square type="danger" text="删除" />
-        </template>
-    </van-swipe-cell>
-
-
+    <div id="list-item">
+      <div class="cell-left">
+        <van-badge :content="100" max="99">
+          <img class="friend-profile" :src="require('../../assets/images/list-item/' + item.imgurl)" alt="friend-profile">
+        </van-badge>
+      </div>
+      <div class="cell-right">
+          <div class="top">
+            <span class="friend-name">{{item.name}}</span>
+            <span class="last-time">{{formatTime}}</span>
+          </div>
+        <div class="bottom">
+          <p class="last-news">{{item.news}}</p>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
 import timeFormater from "../../assets/js/time-format"
 export default {
-    props: ["item"],
-    methods: {
-        formatTime(date) {
-            return timeFormater(date);
-        }
-    },
+  props: ["item"],
+  mounted() {
+  },
+  methods: {
+
+  },
+  computed:{
+    formatTime(){
+      return timeFormater(this.item.time);
+    }
+  },
 }
 </script>
 
 <style lang="less" scoped>
 #list-item {
-    width: 23.44rem;
-    height: 4rem;
-    background: #FFF;
-    padding-top: .5rem;
-
-    &:active {
-        background-color: @less-background-color-grey;
+  height: 1.36rem  /* 68/50 */;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .cell-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.6rem  /* 80/50 */;
+    height: 100%;
+    .friend-profile{
+        width: 0.96rem  /* 48/50 */;
+        height: 0.96rem  /* 48/50 */;
+        border-radius: 0.24rem  /* 12/50 */;
+    }
+  }
+  .cell-right{
+    width: 5.9rem  /* 295/50 */;
+    height: 100%;
+    padding-right: 0.32rem  /* 16/50 */;
+    .top{
+      .friend-name{
+        float: left;
+        width: 4rem  /* 200/50 */;
+        font-size: @less-text-size-18;
+      }
+      .last-time{
+        float: right;
+        font-size: @less-text-size-12;
+      }
+      &::before,&::after{
+        content: '';
+        display: block;
+        clear: both;
+      }
     }
 
-    .van-row {
-        width: 100%
+    .bottom{
+      margin-top: 0.1rem  /* 5/50 */;
+      .last-news{
+        vertical-align: top;
+
+        font-size: @less-text-size-14;
+      }
     }
 
-    .item-left {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 0.75rem;
-
-        .profile {
-            width: 100%;
-            border-radius: 0.75rem;
-        }
+    .friend-name,.last-news{
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
-
-    .item-right {
-        flex: 1;
-
-        .title {
-            height: 1.56rem;
-
-            .name {
-                float: left;
-                width: 8rem;
-                height: 1.56rem;
-                font-size: 1.13rem;
-                color: #272832;
-                letter-spacing: -0.62px;
-                font-weight: 400;
-            }
-
-            .time {
-                float: right;
-                height: 1.06rem;
-                font-size: 0.75rem;
-                color: rgba(39, 40, 50, 0.40);
-                letter-spacing: -0.41px;
-                font-weight: 400;
-            }
-        }
-
-        .info {
-            width: 16.94rem;
-            height: 1.25rem;
-            font-size: 0.88rem;
-            color: rgba(39, 40, 50, 0.60);
-            letter-spacing: -0.48px;
-            font-weight: 400;
-        }
-
-
-    }
-
-    .name,
-    .info {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+  }
 }
 </style>

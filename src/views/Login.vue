@@ -20,7 +20,7 @@
               </div>
             </div>
             <van-form>
-              <van-field name="usename" label="用户名/邮箱" placeholder="用户名/邮箱"></van-field>
+              <van-field name="username" label="用户名/邮箱" placeholder="用户名/邮箱"></van-field>
               <van-field name="password" label="密码" placeholder="密码"></van-field>
             </van-form>
             <van-button class="login-button" round block type="info" native-type="submit">提交</van-button>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import TopBar from "../components/Common/top-bar.vue"
+import TopBar from "../components/Common/top-bar"
 export default {
     components: { TopBar },
     data() {
@@ -54,7 +54,7 @@ export default {
 #login{
 
     min-height: 3000px;
-    margin-top: .88rem;
+    margin-top:@less-spacing-col-44;
     .main{
       padding: 0 @less-spacing-row-28;
       .logo{
@@ -78,10 +78,7 @@ export default {
         .van-form{
           font-size: @less-text-size-18;
           margin-top: 0.28rem  /* 14/50 */;
-          .van-field{
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-          }
+
         }
         .login-button{
           background-color: @less-background-color-enable;

@@ -2,31 +2,40 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from "../views/Home"
 import Login from "../views/Login"
-import Register from "../views/Register"
+import SignUp from "../views/SignUp"
+import Individual from "../views/Individual"
+import Reset from "../views/Reset"
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },{
-    path:'/login',
-    name:"Login",
-    component: Login
-  },{
-    path:"/register",
-    name:"Register",
-    component:Register
-  }
-  
+const routes = [{
+        path: '/',
+        name: 'Home',
+        component: Home
+    }, {
+        path: '/login',
+        name: "Login",
+        component: Login
+    }, {
+        path: "/signUp",
+        name: "signUp",
+        component: SignUp
+    }, {
+        path: "/individual",
+        name: "individual",
+        component: Individual
+    }, {
+        path: "/reset",
+        name: "reset",
+        component: Reset
+    }
+
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router
