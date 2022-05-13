@@ -5,7 +5,8 @@ import Login from "../views/Login"
 import SignUp from "../views/SignUp"
 import Individual from "../views/Individual"
 import Reset from "../views/Reset"
-
+import FriendDetail from "../views/FriendDetail"
+import Chat from "../views/Chat"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -28,6 +29,14 @@ const routes = [{
         path: "/reset",
         name: "reset",
         component: Reset
+    }, {
+        path: "/friendDetail",
+        name: "friendDetail",
+        component: FriendDetail
+    }, {
+        path: "/chat",
+        name: "chat",
+        component: Chat
     }
 
 ]

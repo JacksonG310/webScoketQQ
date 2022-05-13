@@ -20,6 +20,7 @@ export default {
 }
 
 #App {
+  z-index: -999;
   min-height: 100vh;
   background-color: #f7f8fa;
 }

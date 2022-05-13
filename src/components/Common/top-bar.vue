@@ -52,6 +52,12 @@ export default {
       font-size: @less-text-size-20;
     }
 
+   .friend-profile{
+       width: .68rem;
+       height: .68rem;
+       border-radius: .16rem;
+   }
+
 
 }
 </style>
