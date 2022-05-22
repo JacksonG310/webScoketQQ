@@ -2,21 +2,23 @@
   <div id="home">
     <top-bar :padding="true" title="信科QQ">
       <template slot="left">
-        <img class="profile" src="../assets/images/index/profile-03.jpeg" alt="profile">
+        <img class="profile" :src="require(`../assets/images/list-item/${userProfile}`)" alt="profile">
       </template>
       <template slot="right">
-        <van-icon name="search"  size="0.52rem"/>
+        <van-icon name="search" @click="toSearch" size="0.52rem"/>
         <van-icon name="add-o" size="0.52rem"/>
       </template>
     </top-bar>
     <div class="main">
+      <div class="apply-list">
+      </div>
       <div class="friendList">
         <list-item v-for="item in friends" :key="item.id" :item="item"></list-item>
       </div>
       <div class="footer">
         <van-icon name="chat-o" badge="99+" size="0.52rem"/>
         <van-icon name="friends-o" size="0.52rem"/>
-        <van-icon name="https://cdn.jsdelivr.net/npm/@vant/assets/icon-demo.png" size="0.52rem"/>
+        <van-icon name="manager-o" size="0.52rem"/>
       </div>
     </div>
   </div>
@@ -24,7 +26,7 @@
 
 <script>
 import ListItem from "../components/HomeCom/List-Item.vue"
-import friendsArr from "../assets/js/datas"
+import  { friendsArr }  from "../assets/js/datas"
 import TopBar from "../components/Common/top-bar"
 
 export default {
@@ -32,12 +34,20 @@ export default {
   components: { ListItem,TopBar },
   data() {
     return {
-      friends: friendsArr,
+      friends: friendsArr(),
+      userID:"",
+      userProfile:""
     }
   },
+  created() {
+    this.userID = this.$route.query.user;
+    this.userProfile =  window.sessionStorage.getItem(`profile-${this.userID}`);
+  },
   methods: {
-
-  }
+    toSearch(){
+      this.$router.push('/search')
+    }
+  },
 }
 </script>
 

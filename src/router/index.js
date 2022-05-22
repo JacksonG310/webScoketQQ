@@ -7,6 +7,7 @@ import Individual from "../views/Individual"
 import Reset from "../views/Reset"
 import FriendDetail from "../views/FriendDetail"
 import Chat from "../views/Chat"
+import Search from "../views/Search"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -37,6 +38,10 @@ const routes = [{
         path: "/chat",
         name: "chat",
         component: Chat
+    }, {
+        path: "/search",
+        name: "search",
+        component: Search
     }
 
 ]
@@ -47,4 +52,16 @@ const router = new VueRouter({
     routes
 })
 
+router.beforeEach((to, from, next) => {
+    if (to.path == '/login' || to.path == '/signUp') {
+        next();
+    } else {
+        const token = window.localStorage.getItem('QQToken');
+        if (token) {
+            next();
+        } else {
+            next({ path: "/login" });
+        }
+    }
+})
 export default router

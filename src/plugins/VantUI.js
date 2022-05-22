@@ -13,7 +13,8 @@ import {
     SwipeCell,
     // Card,
     Cell,
-    NavBar
+    NavBar,
+    Search
 } from 'vant';
 Vue.use(Button);
 Vue.use(Icon);
@@ -27,4 +28,5 @@ Vue.use(SwipeCell);
 Vue.use(Cell);
 Vue.use(Row);
 Vue.use(Col);
-Vue.use(NavBar)
+Vue.use(NavBar);
+Vue.use(Search);
