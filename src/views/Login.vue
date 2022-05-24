@@ -56,12 +56,13 @@ export default {
               forbidClick:true,
             })
             const {data:res} = await this.$http.post("/login",{loginForm:this.loginForm});
-            console.log(res);
             if(res.code === 20000){
               Toast.success('登录成功');
               // 存储Token和头像
               window.localStorage.setItem('QQToken',res.data.token);
-              window.sessionStorage.setItem(`profile-${res.data.id}`,res.data.profile);
+              window.localStorage.setItem("curUser",JSON.stringify(res.data));
+              window.localStorage.setItem('curUserID',res.data.id);
+              window.localStorage.setItem(`profile-${res.data.id}`,res.data.profile);
               this.$router.push({path:'/',query:{user:res.data.id}});
             }else if(res.code === 40000){
               Toast.fail('用户名或密码错误');

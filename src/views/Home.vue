@@ -41,11 +41,11 @@ export default {
   },
   created() {
     this.userID = this.$route.query.user;
-    this.userProfile =  window.sessionStorage.getItem(`profile-${this.userID}`);
+    this.userProfile =  window.localStorage.getItem(`profile-${this.userID}`);
   },
   methods: {
     toSearch(){
-      this.$router.push('/search')
+      this.$router.push({path:'search',query:{user:this.userID}});
     }
   },
 }
