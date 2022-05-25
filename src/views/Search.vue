@@ -19,7 +19,7 @@
                 <div class="title">用户</div>
                 <div class="user-item">
                     <search-item 
-                        @click.native="moreDetail(res.id,res.isFiend)"
+                        @click.native="moreDetail(res.id,res.isFriend)"
                         v-for="res in userResult" 
                         :key="res.id" 
                         :res="res"></search-item>
@@ -51,7 +51,7 @@ export default {
         }
     },
     created() {
-        this.userID = this.$route.query.userID;
+        this.userID = this.$route.query.user;
     },
     methods: {
         // onSearch(){
@@ -85,7 +85,7 @@ export default {
                 let replaceString = `<span style='color:#54AFFF;'>${this.keyword}</span>`;
                  //从好友表中匹配结果
                 this.userResult.forEach((res)=>{
-                this.judgeFriend(res).then((flag)=>{res.isFriend = flag})
+                this.judgeFriend(res)
                 if(res.name.search(this.keyword) != -1) res.name = res.name.replace(replaceReg, replaceString);
                 if(res.email.search(this.keyword) != -1) res.email = res.email.replace(replaceReg, replaceString);
             })
@@ -94,12 +94,10 @@ export default {
             }
         },500),
         async judgeFriend(result){
-            let flag = false;
             const {data:res} = await this.$http.get(`/search/isFriend?uid=${this.userID}&fid=${result.id}`);
             if(res.code != 50000){
-                flag = res.data;
+                this.$set(result,"isFriend",res.data);
             }
-            return flag;
         },
         moreDetail(id,isFriend){
           this.$router.push({path:"/friendDetail",query:{friendID:id,isFriend:isFriend ? 1 : 0}});  

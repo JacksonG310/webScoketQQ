@@ -8,6 +8,7 @@ import Reset from "../views/Reset"
 import FriendDetail from "../views/FriendDetail"
 import Chat from "../views/Chat"
 import Search from "../views/Search"
+import Apply from "../views/Apply"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -42,6 +43,10 @@ const routes = [{
         path: "/search",
         name: "search",
         component: Search
+    }, {
+        path: "/apply",
+        name: "apply",
+        component: Apply
     }
 
 ]

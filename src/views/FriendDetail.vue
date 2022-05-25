@@ -65,7 +65,7 @@ export default {
                 Toast.success('请求已发送');
                 this.isOpen = false;
             }else{
-                Toast.fail('请求发送失败,请重试');
+                Toast.fail('请求发送失败,请重试 ');
             }
         },
         handleClose(){

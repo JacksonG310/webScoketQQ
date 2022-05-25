@@ -31,7 +31,7 @@ export default {
             default:'user'
         }
     },
-    created() {
+    mounted() {
     },
 }
 </script>

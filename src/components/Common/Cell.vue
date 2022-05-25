@@ -6,7 +6,7 @@
         <slot></slot>
       </span>
     </div>
-    <div class="cell-right" v-show="isLink">
+    <div class="cell-right" v-if="isLink">
       <van-icon name="arrow" size=".28rem" />
     </div>
   </div>
