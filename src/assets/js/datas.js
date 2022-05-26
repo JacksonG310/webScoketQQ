@@ -85,3 +85,21 @@ export const isFriend = () => [{
     friendID: 7,
     userID: 4,
 }]
+
+export const birth = () => {
+    let arr = [];
+    for (let i = 1; i <= 12; i++) {
+        let obj = {};
+        let children = [];
+        obj.text = `${i}月`
+        for (let j = 1; j <= 31; j++) {
+            if (i == 2 && j > 29) break;
+            if ((i == 4 || i == 6 || i == 9 || i == 11) && j > 30) break;
+            children.push({ text: `${j}日` })
+        }
+        obj.children = children;
+        arr.push(obj);
+    }
+    return arr;
+    // console.log(arr);
+}

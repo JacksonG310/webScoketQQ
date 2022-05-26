@@ -19,7 +19,7 @@
             <div class="name">{{friendInfo.name}}</div>
             <div class="sign">
                 <p class="content">
-                   该用户很懒，什么都没写
+                   {{sign}}
                 </p>
             </div>
             <div class="be-friend-box">
@@ -44,12 +44,19 @@ export default {
     components:{TopBar,AddFriend},
     data(){
         return{
+            // 视口高度
             viewPortHeight:0,
+            // 对话框高度
             dialogHeight:0,
+            // 对话框是否打开状态
             isOpen:false,
+            // 当前用户ID
             curUserID:"",
+            // 查看好友的ID
             friendID:"",
+            // 是否为好友
             isFriend:"0",
+            // 好友信息
             friendInfo:{},
         }
     },
@@ -73,19 +80,26 @@ export default {
         },
         readMore(){
             this.$router.push({path:"/individual",query:{id:this.friendID}})
+        },
+        async getFriendInfo(){
+            const {data:res} = await this.$http.get(`/userDetail?id=${this.friendID}`);
+            if(res.code == 20000){
+                this.friendInfo = res.data;
+            }else{
+                Toast.fail("获取用户信息失败");
+            }
         }
     },
-    async created() {
+    computed:{
+        sign(){
+            return this.friendInfo.explain ? this.friendInfo.explain : "这个用户很懒,什么都没有写"
+        }
+    },
+    created() {
         this.friendID = this.$route.query.friendID;
         this.isFriend = this.$route.query.isFriend;
         this.curUserID = window.localStorage.getItem("curUserID");
-        const {data:res} = await this.$http.get(`/userDetail?id=${this.friendID}`);
-        if(res.code == 20000){
-            this.friendInfo = res.data;
-        }else{
-            Toast.fail("获取用户信息失败");
-        }
-        console.log(this.friendInfo);
+        this.getFriendInfo();
     },
     mounted() {
         this.viewPortHeight = document.documentElement.clientHeight;

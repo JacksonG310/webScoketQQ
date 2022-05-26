@@ -11,6 +11,7 @@
     </top-bar>
     <div class="main">
       <div class="apply-list">
+        <list-item :item="apply" @click.native="toCheckApply"></list-item>
       </div>
       <div class="friendList">
         <list-item v-for="item in friends" :key="item.id" :item="item"></list-item>
@@ -18,25 +19,30 @@
       <div class="footer">
         <van-icon name="chat-o" badge="99+" size="0.52rem"/>
         <van-icon name="friends-o" size="0.52rem"/>
-        <van-icon name="manager-o" size="0.52rem"/>
+        <van-icon name="manager-o" size="0.52rem" @click.native="toIndividual"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ListItem from "../components/HomeCom/List-Item.vue"
 import  { friendsArr }  from "../assets/js/datas"
+import ListItem from "../components/HomeCom/List-Item.vue"
 import TopBar from "../components/Common/top-bar"
 
 export default {
   name: 'Home',
-  components: { ListItem,TopBar },
+  components: { ListItem,TopBar},
   data() {
     return {
       friends: friendsArr(),
       userID:"",
-      userProfile:""
+      userProfile:"",
+      apply:{
+        imgurl:"apply.png",
+        name:"好友申请",
+        news:"快来看看新朋友"
+      }
     }
   },
   created() {
@@ -46,8 +52,15 @@ export default {
   methods: {
     toSearch(){
       this.$router.push({path:'search',query:{user:this.userID}});
+    },
+    toCheckApply(){
+      this.$router.push({path:'apply',query:{user:this.userID}});
+    },
+    toIndividual(){
+      this.$router.push({path:'individual',query:{id:this.userID}});
     }
   },
+ 
 }
 </script>
 

@@ -8,7 +8,7 @@
       <div class="cell-right">
           <div class="top">
             <span class="friend-name">{{item.name}}</span>
-            <span class="last-time">{{formatTime}}</span>
+            <span class="last-time" v-show="item.time">{{formatTime}}</span>
           </div>
         <div class="bottom">
           <p class="last-news">{{item.news}}</p>
@@ -20,11 +20,14 @@
 <script>
 import timeFormater from "../../assets/js/time-format"
 export default {
-  props: ["item"],
-  mounted() {
+  props: {
+    item:{
+      type:Object
+    },
+  },
+  created() {
   },
   methods: {
-
   },
   computed:{
     formatTime(){

@@ -14,7 +14,8 @@ import {
     // Card,
     Cell,
     NavBar,
-    Search
+    Search,
+    Picker
 } from 'vant';
 Vue.use(Button);
 Vue.use(Icon);
@@ -30,3 +31,4 @@ Vue.use(Row);
 Vue.use(Col);
 Vue.use(NavBar);
 Vue.use(Search);
+Vue.use(Picker)

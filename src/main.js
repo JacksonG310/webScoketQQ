@@ -12,7 +12,7 @@ import router from './router'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios.create({
-    baseURL: "http://127.0.0.1:3000/"
+    baseURL: "http://192.168.236.205:3000/"
 })
 new Vue({
     router,
