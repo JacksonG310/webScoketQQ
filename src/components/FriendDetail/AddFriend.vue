@@ -17,27 +17,24 @@ export default {
     data() {
         return {
             curUsername:"",
-            isOpen:this.isClick
+            isOpen:this.isClick,
+            message:"",
         }
     },
 
     methods: {
         handleClick(){
-            this.$emit('sendApply')
+            this.$emit('sendApply',this.message)
         },
         closeDialog(){
             this.$emit('closeDialog');
-        }
-    },
-    computed:{
-        message(){
-            return `我是${this.curUsername}`;
         }
     },
     created() {
         let curUser = window.localStorage.getItem('curUser');
         curUser = JSON.parse(curUser);
         this.curUsername = curUser.username;
+        this.message = `我是${this.curUsername}`
     }
 }
 </script>

@@ -98,6 +98,7 @@ export default {
             if(res.code != 50000){
                 this.$set(result,"isFriend",res.data);
             }
+            console.log(res);
         },
         moreDetail(id,isFriend){
           this.$router.push({path:"/friendDetail",query:{friendID:id,isFriend:isFriend ? 1 : 0}});  

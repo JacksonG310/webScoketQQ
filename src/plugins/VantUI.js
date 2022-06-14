@@ -15,7 +15,10 @@ import {
     Cell,
     NavBar,
     Search,
-    Picker
+    Picker,
+    PullRefresh,
+    ImagePreview,
+    Loading
 } from 'vant';
 Vue.use(Button);
 Vue.use(Icon);
@@ -31,4 +34,7 @@ Vue.use(Row);
 Vue.use(Col);
 Vue.use(NavBar);
 Vue.use(Search);
-Vue.use(Picker)
+Vue.use(Picker);
+Vue.use(PullRefresh);
+Vue.use(ImagePreview);
+Vue.use(Loading)

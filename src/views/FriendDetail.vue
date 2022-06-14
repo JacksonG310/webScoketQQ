@@ -12,7 +12,7 @@
             <div class="profile">
                 <img 
                     :class="{'open':isOpen,'close':!isOpen}" 
-                    :src="require(`../assets/images/list-item/${friendInfo.profile}`)" 
+                    :src="friendInfo.profile"
                     alt="profile">
                 <!-- <i class="sex-tag" v-show="!isOpen"></i> -->
             </div>
@@ -23,11 +23,11 @@
                 </p>
             </div>
             <div class="be-friend-box">
-                <van-button v-if="isFriend == '1'" class="send-message-button" type="primary" block >发消息</van-button>
-                <van-button v-else  class="be-friend-button" type="primary" block @click="isOpen = true">加为好友</van-button>
+                <van-button v-if="isFriend == '1' && curUserID != friendID" class="send-message-button" type="primary" block >发消息</van-button>
+                <van-button v-if="isFriend == '0' && curUserID != friendID"   class="be-friend-button" type="primary" block @click="isOpen = true">加为好友</van-button>
             </div>
         </div>
-        <div class="bg"><img :src="require(`../assets/images/list-item/${friendInfo.profile}`)" alt="bg"></div>
+        <div class="bg"><img :src="friendInfo.profile" alt="bg"></div>
         <div class="mask"></div>
             <add-friend
              :firendName="friendInfo.name"
@@ -61,11 +61,11 @@ export default {
         }
     },
     methods: {
-       async sendApply(){
+       async sendApply(message){
             let data = {
                 uid:this.curUserID,
                 fid:this.friendID,
-                msg:this.message,
+                msg:message,
             }
             const {data:res} = await this.$http.post('/friend/friendApply',data);
             if(res.code === 20000){
@@ -73,7 +73,9 @@ export default {
                 this.isOpen = false;
             }else{
                 Toast.fail('请求发送失败,请重试 ');
+                this.isOpen = false;
             }
+            // console.log(res);
         },
         handleClose(){
             this.isOpen = false;
@@ -83,6 +85,8 @@ export default {
         },
         async getFriendInfo(){
             const {data:res} = await this.$http.get(`/userDetail?id=${this.friendID}`);
+            console.log(this.friendID);
+            console.log(res);
             if(res.code == 20000){
                 this.friendInfo = res.data;
             }else{

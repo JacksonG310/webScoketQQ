@@ -47,8 +47,12 @@ const routes = [{
         path: "/apply",
         name: "apply",
         component: Apply
-    }
+    },
 
+    // {
+    //     path: "/test",
+    //     component: Classify
+    // },
 ]
 
 const router = new VueRouter({

@@ -1,22 +1,40 @@
 <template>
     <div id="applyCard">
-        <div class="profile"><img src="../../assets/images/list-item/user.png" alt="profile"></div>
+        <div class="profile"><img :src="data.friendInfo.profile" alt="profile"></div>
         <div class="button-group">
-            <button class="refuse-button">拒绝</button>
-            <button class="agree-button">同意</button>
+            <button class="refuse-button" @click="refuseApply">拒绝</button>
+            <button class="agree-button" @click="agreeApply">同意</button>
         </div>
         <div class="info">
-            <p class="name">即时客观</p>
-            <p class="apply-time">2020-05-11</p>
+            <p class="name">{{data.friendInfo.name}}</p>
+            <p class="apply-time">{{applyTime}}</p>
         </div>
         <div class="message">
-            留言:你好请通过我的好友神器哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            {{`留言:${data.applyMsg.message}`}}
         </div>
     </div>
 </template>
 
 <script>
+import timeFormat from '../../assets/js/time-format'
 export default {
+    props:['data'],
+    data() {
+        return {
+            applyTime:timeFormat(this.data.applyMsg.updatedAt)
+        }
+    },
+    methods: {
+        agreeApply(){
+            this.$emit("handleAgree",this.data.friendInfo.id)
+        },
+        refuseApply(){
+            this.$emit("handleRefuse",this.data.friendInfo.id);
+        }
+    },
+    created() {
+     
+    },
     
 }
 </script>

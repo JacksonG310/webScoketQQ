@@ -1,7 +1,7 @@
 <template>
     <div id="search-item">
         <div class="profile">
-            <img :src="require(`../../assets/images/list-item/${res.profile}`)" alt="profile">
+            <img :src="res.profile" alt="profile">
         </div>
         <div class="info">
             <div class="name" v-html="res.name"></div>
