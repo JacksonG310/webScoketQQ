@@ -1,5 +1,5 @@
 # webScoketQQ
-后台地址
+后台地址 https://github.com/JacksonG310/WebSocketQQ-server
 ---
 安装依赖 yarn install
 ---
